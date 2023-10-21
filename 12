@@ -1,0 +1,21 @@
+mport pandas as pd
+
+lst = ['robot'] * 10
+lst += ['human'] * 10
+random.shuffle(lst)
+
+# Создаем пустой DataFrame с необходимыми столбцами
+one_hot_data = pd.DataFrame(columns=['robot', 'human'])
+
+# Заполняем столбцы one hot значениями
+for i in range(len(lst)):
+    if lst[i] == 'robot':
+        one_hot_data.loc[i] = [1, 0]
+    else:
+        one_hot_data.loc[i] = [0, 1]
+
+# Добавляем столбец one hot в исходный DataFrame
+data['robot'] = one_hot_data['robot']
+data['human'] = one_hot_data['human']
+
+data.head()
